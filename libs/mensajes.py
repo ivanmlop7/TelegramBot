@@ -1,0 +1,1 @@
+mensaje_help = 'Bienvenido al bot para gestionar la lista de la compra. Aqui podras agregar elementos a una lista de la compra y podras consultar e interactuar con esta eliminando los productos que no necesites.'
