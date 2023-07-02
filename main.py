@@ -4,6 +4,7 @@ import telebot
 import json
 
 bot = telebot.TeleBot(token)
+lista_compra = 'data/lista_compra.json'
 
 @bot.message_handler(commands=['help', 'ayuda'])
 def cmd_help(message):
@@ -11,7 +12,7 @@ def cmd_help(message):
 
 @bot.message_handler(commands=['list', 'lista'])
 def cmd_list(message):
-    with open("datos.json", "r") as archivo:
+    with open(lista_compra, "r") as archivo:
         datos_recuperados = json.load(archivo)
 
     if len(datos_recuperados)<= 0:
@@ -23,7 +24,7 @@ def cmd_list(message):
 
 @bot.message_handler(commands=['clear', 'borrar'])
 def cmd_list(message):
-    with open("datos.json", "w") as archivo:
+    with open(lista_compra, "w") as archivo:
         json.dump({}, archivo)
     bot.reply_to(message, 'Se ha borrado el contenido de la lista')
     
@@ -34,14 +35,14 @@ def bot_mensajes_texto(message):
     if message.text.startswith("/"):
         bot.send_message(message.chat.id, 'Comando no disponible')
     else:
-        with open("datos.json", "r") as archivo:
+        with open(lista_compra, "r") as archivo:
             datos = json.load(archivo)
         if 'Productos' in datos:        
             datos["Productos"].append(message.text)
         else:
             datos["Productos"] = [message.text]
 
-        with open('datos.json', 'w') as archivo:
+        with open(lista_compra, 'w') as archivo:
             json.dump(datos,archivo)       
 
 
