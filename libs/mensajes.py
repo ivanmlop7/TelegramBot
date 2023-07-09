@@ -1,1 +1,7 @@
-mensaje_help = 'Bienvenido al bot para gestionar la lista de la compra. Aqui podras agregar elementos a una lista de la compra y podras consultar e interactuar con esta eliminando los productos que no necesites.'
+msg_help = 'Bienvenido al bot para gestionar la lista de la compra. Aqui podras agregar elementos a una lista de la compra y podras consultar e interactuar con esta eliminando los productos que no necesites.'
+msg_start_with = 'Agrega productos a la lista. Una vez finalizado usa el comando /end para salir del modo de agregación.'
+msg_add_product_end = 'Modo de agregación finalizado.'
+msg_add_product_error = 'Comando inválido. Por favor, usa el comando /add o /agregar para iniciar el modo de agregación.'
+msg_add_product_error_slash = 'El producto no puede empezar con "/".'
+msg_unauthorized = 'Usuario no autorizado para esta funcion.'
+msg_clear_list = 'Se ha borrado el contenido de la lista'

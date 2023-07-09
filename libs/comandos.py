@@ -2,7 +2,7 @@ import json
 import telebot
 import emoji
 from configs.secrets import token
-from libs.mensajes import mensaje_help
+from libs.mensajes import msg_help, msg_clear_list
 
 bot = telebot.TeleBot(token)
 shopping_list = 'data/shopping_list.json'
@@ -11,7 +11,7 @@ shopping_list = 'data/shopping_list.json'
 class Commands:
     @staticmethod
     def help(message):
-        bot.reply_to(message, mensaje_help)
+        bot.reply_to(message, msg_help)
 
     @staticmethod
     def show_list(message):
@@ -23,13 +23,15 @@ class Commands:
         else:
             products_list = products['Productos']
             print(products_list)
-            bot.reply_to(message, str(products_list))
+            for product in products_list:
+                bot.send_message(chat_id=message.chat.id, text=product)
 
     @staticmethod
     def delete_list(message):
         with open(shopping_list, "w") as file:
             json.dump({}, file)
         bot.reply_to(message, 'Se ha borrado el contenido de la lista')
+
 
     # @staticmethod
     # def add_product_to_list(message):
